@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    dynamic list = ViewData["list"];
+}
+<link rel="stylesheet" href="~/css/contactstyle.css" type="text/css" media="screen" runat="server" asp-append-version="true" />
+<section class="body">
+    <h4 class="mb-3">Contact</h4>
+    <div class="d-flex mt-3">
+        <div class="container-fluid container-1">
+            @foreach (var item in list)
+            {
+                <a asp-controller="Contact" asp-action="Details" asp-route-id=@item.Id>
+                    <div class="contacts" id=@item.Id>
+                        <div class="name"> @item.Name </div>
+                        <div class="email"> @item.Email </div>
+                        <div class="mobile">+91 @item.Phone</div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</section>
+
+<script src="~/js/site.js" asp-append-version="true"></script>

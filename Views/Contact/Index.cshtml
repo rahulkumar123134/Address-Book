@@ -1,0 +1,23 @@
+﻿@model IEnumerable<AddressBook.Models.Contact>;
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="~/css/site.css" type="text/css" media="screen" runat="server" asp-append-version="true" />
+<section class="body">
+    <h4 class="mb-3">Contact</h4>
+    <div class="d-flex mt-3">
+        <div class="container-fluid container-1">
+            @foreach (var item in Model)
+            {
+                <a asp-controller="Contact" asp-action="Details" asp-route-id=@item.Id>
+                    <div class="contacts">
+                        <div class="name">  @Html.DisplayFor(modelItem => item.Name) </div>
+                        <div class="email"> @Html.DisplayFor(modelItem => item.Email) </div>
+                        <div class="mobile">+91 @Html.DisplayFor(modelItem => item.Phone)</div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</section>

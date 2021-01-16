@@ -1,0 +1,54 @@
+﻿@model AddressBook.Models.Contact;
+
+@{
+    ViewData["Title"] = "Details";
+}
+<head>
+    <link rel="stylesheet" href="~/css/common.css" type="text/css" media="screen" runat="server" />
+</head>
+@{
+    await Html.RenderPartialAsync("_Contact");
+}
+<div>
+    <section class="content-design">
+        <div class="container-fluid container-2">
+            <div *ngIf="showDetails" class="display-contact">
+                <div class="first-row">
+                    <div>
+                        <h2 class="display-name"> @Html.DisplayFor(model => model.Name)</h2>
+                    </div>
+                    <div>
+                        @{
+                            var item = Model;
+                            <a asp-controller="Contact" asp-action="Edit" asp-route-id=@item.Id>
+                                <div class="edit option">
+                                    <img class="icon" src="~/images/edit1.jpg"> EDIT
+                                </div>
+                            </a>
+                            <a a asp-controller="Contact" asp-action="DeleteContact" asp-route-id=@item.Id>
+                                <div class="delete option">
+                                    <img class="icon" src="~/images/delete2.png"> DELETE
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="my-3 contact-info">
+                    Email: <span class="display-email"> @Html.DisplayFor(model => model.Email)</span>
+                </div>
+                <div class="contact-info">
+                    Mobile: <span class="display-mobile">+91  @Html.DisplayFor(model => model.Phone)</span>
+                </div>
+                <div class="contact-info">
+                    Landline: <span class="display-landline"> @Html.DisplayFor(model => model.Landline)</span>
+                </div>
+                <div class="contact-info my-3">
+                    Website: <span class="display-website">  @Html.DisplayFor(model => model.Website)</span>
+                </div>
+                <div class="contact-info">
+                    Address: <div class="display-address"> @Html.DisplayFor(model => model.Address)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
